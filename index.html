@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REMGOD TECH ENTERPRISE - Building Dreams, Engineering the Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Custom CSS for elements that need more precise control */
+        .project-card img {
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry-grid {
+                column-count: 3;
+            }
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-image {
+            transition: all 0.3s ease;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-800 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fa fa-building-o text-2xl"></i>
+                    <a href="#" class="text-xl font-bold">REMGOD TECH</a>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="hover:text-yellow-300 transition">Home</a>
+                    <a href="#projects" class="hover:text-yellow-300 transition">Projects</a>
+                    <a href="#gallery" class="hover:text-yellow-300 transition">Gallery</a>
+                    <a href="#about" class="hover:text-yellow-300 transition">About</a>
+                    <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden py-2" id="mobile-menu">
+                <a href="#home" class="block py-2 hover:bg-blue-700 px-2 rounded">Home</a>
+                <a href="#projects" class="block py-2 hover:bg-blue-700 px-2 rounded">Projects</a>
+                <a href="#gallery" class="block py-2 hover:bg-blue-700 px-2 rounded">Gallery</a>
+                <a href="#about" class="block py-2 hover:bg-blue-700 px-2 rounded">About</a>
+                <a href="#contact" class="block py-2 hover:bg-blue-700 px-2 rounded">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-gray-900 text-white py-20 md:py-32">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">REMGOD TECH ENTERPRISE</h1>
+            <p class="text-xl md:text-2xl mb-8">Building Dreams, Engineering the Future</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#projects"
+                    class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-6 rounded-lg transition duration-300 transform hover:scale-105">
+                    View Projects
+                </a>
+                <a href="#contact"
+                    class="bg-transparent hover:bg-blue-800 text-white font-semibold hover:text-white py-3 px-6 border border-white hover:border-transparent rounded-lg transition duration-300 transform hover:scale-105">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Projects</h2>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button class="filter-btn active px-4 py-2 rounded-full bg-blue-800 text-white" data-filter="all">All
+                    Projects</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300"
+                    data-filter="upcoming">Upcoming</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300"
+                    data-filter="completed">Completed</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300"
+                    data-filter="roads">Roads</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300"
+                    data-filter="buildings">Buildings</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 hover:bg-gray-300"
+                    data-filter="others">Others</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+                    data-status="completed" data-category="buildings">
+                    <div class="overflow-hidden h-64">
+                        <img src="REMGOD/Shopping Complex/20250204_140707.jpg" alt="Area office"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Shopping Complex</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">Completed</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">Buildings</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">A state-of-the-art residential complex with modern amenities and
+                            stunning views of the city.</p>
+                        <button
+                            class="view-details-btn w-full py-2 bg-blue-800 hover:bg-blue-900 text-white rounded-lg transition duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+                    data-status="completed" data-category="buildings">
+                    <div class="overflow-hidden h-64">
+                        <img src="REMGOD/ADMINISTRATIVE BLOCK/20240725_084341.jpg" alt="Area office"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Administrative Block</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">Completed</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800">Buildings</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">A state-of-the-art residential complex with modern amenities and
+                            stunning views of the city.</p>
+                        <button
+                            class="view-details-btn w-full py-2 bg-blue-800 hover:bg-blue-900 text-white rounded-lg transition duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+                    data-status="completed" data-category="roads">
+                    <div class="overflow-hidden h-64">
+                        <img src="REMGOD/Adenike Ogunye/4.jpg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Adenike Ogunye street</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">Completed</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">Road</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">A 50,000 sqm industrial complex designed for manufacturing and
+                            production facilities.</p>
+                        <button
+                            class="view-details-btn w-full py-2 bg-blue-800 hover:bg-blue-900 text-white rounded-lg transition duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+                    data-status="completed" data-category="roads">
+                    <div class="overflow-hidden h-64">
+                        <img src="REMGOD/Adeyomoye/pic1 (2).jpg" alt="Commercial Tower"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Adeyomoye Street</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">Completed</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">Road</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">A 30-story commercial tower with office spaces, retail areas, and
+                            conference facilities.</p>
+                        <button
+                            class="view-details-btn w-full py-2 bg-blue-800 hover:bg-blue-900 text-white rounded-lg transition duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+                    data-status="upcoming" data-category="others">
+                    <div class="overflow-hidden h-64">
+                        <img src="REMGOD/RECREATION CENTRE/pic1.jpg" alt="Bridge Construction"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">RECREATION CENTRE</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-yellow-100 text-yellow-800">Ongoing</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800">Others</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Comprehensive renovation and expansion of the iconic Third
+                            Mainland Bridge.</p>
+                        <button
+                            class="view-details-btn w-full py-2 bg-blue-800 hover:bg-blue-900 text-white rounded-lg transition duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl"
+                    data-status="completed" data-category="others">
+                    <div class="overflow-hidden h-64">
+                        <img src="REMGOD/Ikosi Nur & Pry Sch/pic1.jpg" alt="Ikosi Nur & Pry Sch"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Ikosi Nur & Pry Sch</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">Completed</span>
+                            <span
+                                class="px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800">Others</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Modern water treatment plant capable of processing 50 million
+                            gallons per day.</p>
+                        <button
+                            class="view-details-btn w-full py-2 bg-blue-800 hover:bg-blue-900 text-white rounded-lg transition duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <button
+                    class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold rounded-lg transition duration-300">
+                    Load More Projects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Project Gallery</h2>
+
+            <div class="masonry-grid">
+                <!-- Gallery Item 1 -->
+                <div class="masonry-item">
+                    <div class="gallery-image bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                        <img src="REMGOD/Adenike Ogunye/pic.jpg" alt="Adenike Ogunye street" class="w-full h-auto">
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="masonry-item">
+                    <div class="gallery-image bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                        <img src="REMGOD/Adeyomoye/pic2.jpg" alt="Adeyomoye street" class="w-full h-auto">
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="masonry-item">
+                    <div class="gallery-image bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                        <img src="REMGOD/RECREATION CENTRE/pic2.jpg" alt="RECREATION CENTRE" class="w-full h-auto">
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="masonry-item">
+                    <div class="gallery-image bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                        <img src="REMGOD/Ikosi Nur & Pry Sch/pic2.jpg" alt="Office Building" class="w-full h-auto">
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="masonry-item">
+                    <div class="gallery-image bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                        <img src="REMGOD/ADMINISTRATIVE BLOCK/pic.jpg" alt="Bridge Construction" class="w-full h-auto">
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="masonry-item">
+                    <div class="gallery-image bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                        <img src="REMGOD/area office/pic.jpg" alt="Water Facility" class="w-full h-auto">
+                    </div>
+                </div>
+                <!-- Gallery Item 7 -->
+                <div class="masonry-item">
+                    <div class="gallery-image bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                        <img src="REMGOD/Solar light/pic1.jpg" alt="Water Facility" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="masonry-item">
+                    <div class="gallery-image bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                        <img src="REMGOD/Shopping Complex/Camscanner_1745147991361.jpg" alt="Water Facility"
+                            class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="masonry-item">
+                    <div class="gallery-image bg-white rounded-lg shadow-md overflow-hidden mb-4">
+                        <img src="REMGOD/Kayode Falowo Daimond/pic2.jpg" alt="Water Facility" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">About REMGOD TECH</h2>
+
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2">
+                    <img src="REMGOD/logo.png" alt="Construction Team" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Our Story</h3>
+                    <p class="text-gray-600 mb-4">
+                        Founded in 2010, REMGOD TECH ENTERPRISE has grown from a small local contractor to one of the
+                        most respected construction firms in the region. Our commitment to quality, safety, and
+                        innovation has earned us numerous awards and a reputation for excellence.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        With over 200 skilled professionals and state-of-the-art equipment, we've successfully completed
+                        more than 150 projects across various sectors including residential, commercial, industrial, and
+                        infrastructure development.
+                    </p>
+
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Our Mission</h3>
+                    <p class="text-gray-600 mb-6">
+                        To deliver exceptional construction services through innovative solutions, quality
+                        craftsmanship, and unwavering commitment to client satisfaction while maintaining the highest
+                        standards of safety and environmental responsibility.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <i class="fa fa-check-circle text-blue-800 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-gray-800">Quality Assurance</h4>
+                            <p class="text-sm text-gray-600">Rigorous quality control at every stage</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <i class="fa fa-shield text-blue-800 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-gray-800">Safety First</h4>
+                            <p class="text-sm text-gray-600">Zero tolerance for safety violations</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <i class="fa fa-clock-o text-blue-800 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-gray-800">On-Time Delivery</h4>
+                            <p class="text-sm text-gray-600">90% of projects completed on schedule</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <i class="fa fa-leaf text-blue-800 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-gray-800">Sustainable Practices</h4>
+                            <p class="text-sm text-gray-600">Eco-friendly construction methods</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fa fa-map-marker text-yellow-400 mt-1 mr-4 text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">Headquarters</h4>
+                                <p>2, ANIFOWOSHE STREET, 1067390, IKORODU LAGOS</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fa fa-phone text-yellow-400 mt-1 mr-4 text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">Phone</h4>
+                                <p>+234 704 545 5167</p>
+                                <p>+234 805 460 0353</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fa fa-envelope text-yellow-400 mt-1 mr-4 text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p>remgodenterprises17@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fa fa-clock-o text-yellow-400 mt-1 mr-4 text-xl"></i>
+                            <div>
+                                <h4 class="font-bold">Working Hours</h4>
+                                <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                                <p>Saturday: 9:00 AM - 4:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="bg-white text-blue-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-yellow-400 transition">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a href="#"
+                                class="bg-white text-blue-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-yellow-400 transition">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#"
+                                class="bg-white text-blue-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-yellow-400 transition">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#"
+                                class="bg-white text-blue-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-yellow-400 transition">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block mb-1">Your Name</label>
+                                <input type="text" id="name"
+                                    class="w-full px-4 py-2 rounded-lg bg-blue-700 border border-blue-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-white placeholder-blue-300">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-1">Your Email</label>
+                                <input type="email" id="email"
+                                    class="w-full px-4 py-2 rounded-lg bg-blue-700 border border-blue-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-white placeholder-blue-300">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block mb-1">Subject</label>
+                            <input type="text" id="subject"
+                                class="w-full px-4 py-2 rounded-lg bg-blue-700 border border-blue-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-white placeholder-blue-300">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block mb-1">Message</label>
+                            <textarea id="message" rows="5"
+                                class="w-full px-4 py-2 rounded-lg bg-blue-700 border border-blue-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-white placeholder-blue-300"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full py-3 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold rounded-lg transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.585027438275!2d3.423210415231415!3d6.441950595336373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf2b6a6e7e935%3A0x8e8e9d8e8e9d8e8e!2sVictoria%20Island%2C%20Lagos!5e0!3m2!1sen!2sng!4v1620000000000!5m2!1sen!2sng"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa fa-building-o text-2xl text-yellow-400"></i>
+                        <span class="text-xl font-bold">REMGOD TECH ENTERPRISE</span>
+                    </div>
+                    <p class="mt-2 text-gray-400">Building Dreams, Engineering the Future</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-bold mb-4 text-yellow-400">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="hover:text-yellow-400 transition">Home</a></li>
+                            <li><a href="#projects" class="hover:text-yellow-400 transition">Projects</a></li>
+                            <li><a href="#gallery" class="hover:text-yellow-400 transition">Gallery</a></li>
+                            <li><a href="#about" class="hover:text-yellow-400 transition">About</a></li>
+                            <li><a href="#contact" class="hover:text-yellow-400 transition">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold mb-4 text-yellow-400">Services</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-yellow-400 transition">Construction</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition">Renovation</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition">Project Management</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition">Consulting</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold mb-4 text-yellow-400">Legal</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-yellow-400 transition">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition">Terms of Service</a></li>
+                            <li><a href="#" class="hover:text-yellow-400 transition">Cookie Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 REMGOD TECH ENTERPRISE. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal"
+        class="modal fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="modal-content bg-white rounded-lg shadow-xl max-w-4xl w-11/12 mx-4 max-h-[90vh] overflow-y-auto">
+            <span
+                class="close absolute top-4 right-4 text-3xl font-bold text-gray-600 hover:text-gray-900 cursor-pointer">&times;</span>
+
+            <div class="p-6">
+                <div id="modal-images" class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <!-- Images will be injected here dynamically -->
+                </div>
+
+
+                <h2 id="modal-title" class="text-3xl font-bold mb-4 text-gray-800"></h2>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span id="modal-status" class="px-3 py-1 rounded-full text-xs font-semibold"></span>
+                    <span id="modal-category" class="px-3 py-1 rounded-full text-xs font-semibold"></span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Project Details</h3>
+                        <p id="modal-description" class="text-gray-600"></p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Key Features</h3>
+                        <ul id="modal-features" class="list-disc pl-5 text-gray-600 space-y-1">
+                            <!-- Features will be added by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-4 rounded-lg">
+                    <h3 class="text-xl font-bold mb-2 text-gray-800">Project Timeline</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-500">Start Date</p>
+                            <p id="modal-start" class="font-semibold"></p>
+                        </div>
+                        <div class="h-1 bg-gray-300 flex-grow mx-4 relative">
+                            <div class="absolute inset-0 bg-blue-800" id="modal-progress"></div>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">End Date</p>
+                            <p id="modal-end" class="font-semibold"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Project filtering
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-800', 'text-white'));
+                    filterButtons.forEach(btn => btn.classList.add('bg-gray-200', 'hover:bg-gray-300'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active', 'bg-blue-800', 'text-white');
+                    this.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+
+                    const filterValue = this.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        if (filterValue === 'all' ||
+                            card.getAttribute('data-status') === filterValue ||
+                            card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('project-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalStatus = document.getElementById('modal-status');
+            const modalCategory = document.getElementById('modal-category');
+            const modalFeatures = document.getElementById('modal-features');
+            const modalStart = document.getElementById('modal-start');
+            const modalEnd = document.getElementById('modal-end');
+            const modalProgress = document.getElementById('modal-progress');
+            const closeBtn = document.querySelector('.close');
+
+            // Project data for modals
+            const projectsData = {
+                "Shopping Complex":
+                {
+                    images: [
+                        { src: "REMGOD/Shopping Complex/pic.jpg", label: "During Construction" },
+                        { src: "REMGOD/Shopping Complex/pic2.jpg", label: "After Construction" }
+                    ],
+                    description: "A state-of-the-art residential complex with modern amenities and stunning views of the city. The project includes over 10 shopping/office space across two towers, with shared facilities including a car park.",
+                    status: "Completed",
+                    statusClass: "bg-green-100 text-green-800",
+                    category: "Buildings",
+                    categoryClass: "bg-blue-100 text-blue-800",
+                    features: [
+                        "15 Shopping/office space",
+                        "24/7 security",
+                        "Car park",
+                    ],
+                    start: "Aug 2024",
+                    end: "Feb 2025",
+                    progress: "100%"
+                },
+                "Administrative Block": {
+                    images: [
+                        { src: "REMGOD/ADMINISTRATIVE BLOCK/pic1.jpg", label: "Before Construction" },
+                        { src: "REMGOD/ADMINISTRATIVE BLOCK/pic2.jpg", label: "During Construction" },
+                        { src: "REMGOD/ADMINISTRATIVE BLOCK/pic.jpg", label: "After Construction" }
+                    ],
+                    description: "A major infrastructure project is to reconstruct the office space into a legislative building that will accommodate all the councilors and their legislative chamber",
+                    status: "Completed",
+                    statusClass: "bg-green-100 text-green-800",
+                    category: "Building",
+                    categoryClass: "bg-blue-100 text-blue-800",
+                    features: [
+                        "7 office space at the ground floor",
+                        "The Legislative chamber, the leader of the house office and the clerk of the house office on the top floor"
+                    ],
+                    start: "Nov 2023",
+                    end: "Oct 2024",
+                    progress: "100%"
+                },
+
+                "Adenike Ogunye street": {
+                    images: [
+                        { src: "REMGOD/Adenike Ogunye/pic1.jpg", label: "Before Construction" },
+                        { src: "REMGOD/Adenike Ogunye/pic2.jpg", label: "During Construction" },
+                        { src: "REMGOD/Adenike Ogunye/pic.jpg", label: "After Construction" },
+                    ],
+                    description: "A road Re-construction is in dire need for repair due to its deteriorating conditiob hence in need for immediate construction work to ensure the safety and well being of commuter.",
+                    status: "Completed",
+                    statusClass: "bg-green-100 text-green-800",
+                    category: "Others",
+                    categoryClass: "bg-purple-100 text-purple-800",
+                    features: [
+                        "330m/9m Road"
+                    ],
+                    start: "Mar 2024",
+                    end: "Aug 2024",
+                    progress: "100%"
+                },
+                "Adeyomoye Street": {
+                    images: [
+                        { src: "REMGOD/Adeyomoye/pic1a.jpg", label: "Before Construction" },
+                        { src: "REMGOD/Adeyomoye/pic2a.jpg", label: "During Construction" },
+                        { src: "REMGOD/Adeyomoye/pic2.jpg", label: "After Construction" },
+                    ],
+                    description: "A road Re-construction is in dire need for repair due to its deteriorating conditiob hence in need for immediate construction work to ensure the safety and well being of commuter.",
+                    status: "Complete",
+                    statusClass: "bg-green-100 text-green-800",
+                    category: "Road",
+                    categoryClass: "bg-purple-100 text-purple-800",
+                    features: [
+                        "Well constructed Road that suite the commuter use."
+                    ],
+                    start: "Feb 2023",
+                    end: "Jul 2026",
+                    progress: "100%"
+                },
+                "RECREATION CENTRE": {
+                    images: [
+                        { src: "REMGOD/RECREATION CENTRE/pic1.jpg", label: "Before Construction" },
+                        { src: "REMGOD/RECREATION CENTRE/pic2.jpg", label: "During Construction" },
+                    ],
+                    img: "",
+                    description: "Comprehensive construction of the Recreation Center that comprises so many sporting activities Examples: Football pitch, Swimming pool, and indoor games.",
+                    status: "Ongoing",
+                    statusClass: "bg-yellow-100 text-yellow-800",
+                    category: "Others",
+                    categoryClass: "bg-red-100 text-red-800",
+                    features: [
+                        "Football pitch",
+                        "Swimming pool",
+                        "Table tennis",
+                        "Basketball court",
+                        "Track and field"
+                    ],
+                    start: "Mar 2024",
+                    end: "Ongoing",
+                    progress: "60%"
+                },
+                "Ikosi Nur & Pry Sch": {
+                    images: [
+                        { src: "REMGOD/Ikosi Nur & Pry Sch/pic1.jpg", label: "Before Construction" },
+                        { src: "REMGOD/Ikosi Nur & Pry Sch/pic2.jpg", label: "During Construction" },
+                    ],
+                    description: "The renovation is to enable the student to have a well condusive learning environment.",
+                    status: "Completed",
+                    statusClass: "bg-green-100 text-green-800",
+                    category: "Others",
+                    categoryClass: "bg-red-100 text-red-800",
+                    features: [
+                        "Renovation of classroom",
+                        "Changing the entrance doors and windows",
+                        "Tiling the floor of the classrooms",
+                        "Replacing the black board to the mordern white board"
+                    ],
+                    start: "Jul 2023",
+                    end: "Oct 2023",
+                    progress: "100%"
+                }
+            };
+
+            // Add click event to all view details buttons
+            document.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const card = this.closest('.project-card');
+                    const title = card.querySelector('h3').textContent;
+
+                    // Set modal content based on project data
+                    const projectData = projectsData[title];
+                    const modalImagesContainer = document.getElementById('modal-images');
+                    modalImagesContainer.innerHTML = ''; // Clear previous images
+
+                    if (projectData.images) {
+                        projectData.images.forEach(imageObj => {
+                            const imgWrapper = document.createElement('div');
+                            imgWrapper.className = 'flex flex-col items-center';
+
+                            const img = document.createElement('img');
+                            img.src = imageObj.src;
+                            img.alt = imageObj.label;
+                            img.className = 'w-full h-auto rounded-lg shadow-md';
+
+                            const caption = document.createElement('p');
+                            caption.className = 'text-sm text-gray-600 mt-2';
+                            caption.textContent = imageObj.label;
+
+                            imgWrapper.appendChild(img);
+                            imgWrapper.appendChild(caption);
+                            modalImagesContainer.appendChild(imgWrapper);
+                        });
+                    } else {
+                        const img = document.createElement('img');
+                        img.src = projectData.img;
+                        img.alt = title;
+                        img.className = 'w-full h-auto rounded-lg';
+                        modalImagesContainer.appendChild(img);
+                    }
+
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = projectData.description;
+
+                    modalStatus.textContent = projectData.status;
+                    modalStatus.className = `px-3 py-1 rounded-full text-xs font-semibold ${projectData.statusClass}`;
+
+                    modalCategory.textContent = projectData.category;
+                    modalCategory.className = `px-3 py-1 rounded-full text-xs font-semibold ${projectData.categoryClass}`;
+
+                    // Clear previous features
+                    modalFeatures.innerHTML = '';
+
+                    // Add new features
+                    projectData.features.forEach(feature => {
+                        const li = document.createElement('li');
+                        li.textContent = feature;
+                        modalFeatures.appendChild(li);
+                    });
+
+                    modalStart.textContent = projectData.start;
+                    modalEnd.textContent = projectData.end;
+                    modalProgress.style.width = projectData.progress;
+
+                    // Show modal
+                    modal.style.opacity = '1';
+                    modal.style.pointerEvents = 'auto';
+                });
+            });
+
+            // Close modal when clicking X
+            closeBtn.addEventListener('click', function () {
+                modal.style.opacity = '0';
+                modal.style.pointerEvents = 'none';
+            });
+
+            // Close modal when clicking outside
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) {
+                    modal.style.opacity = '0';
+                    modal.style.pointerEvents = 'none';
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+
+                        // Close mobile menu if open
+                        const mobileMenu = document.getElementById('mobile-menu');
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
